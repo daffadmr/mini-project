@@ -19,6 +19,7 @@ subscription UserDiary($user_id: Int) {
     isi
     judul
     created_at
+    tanggal
     user_id
   }
 }

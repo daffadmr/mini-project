@@ -51,7 +51,7 @@ query UserDiary($id: uuid) {
 
 export const SEARCH_DIARY = gql`
 query SearchQuery($input: String, $user_id: Int) {
-  diari(order_by: {id: asc}, where: {_or: [{judul: {_ilike: $input}}, {isi: {_ilike: $input}}], user_id: {_eq: $user_id}}) {
+  diari(order_by: {created_at: desc}, where: {_or: [{judul: {_ilike: $input}}, {isi: {_ilike: $input}}], user_id: {_eq: $user_id}}) {
     id
     foto
     isi
@@ -66,7 +66,8 @@ query SearchQuery($input: String, $user_id: Int) {
 
 export const FILTER_DIARY = gql`
 query FilterDate($tanggal: date, $user_id: Int) {
-  diari(where: {created_at: {_eq: $tanggal}, user_id: {_eq: $user_id}}) {
+  diari(order_by: {created_at: desc}, where: {tanggal: {_eq: $tanggal}, user_id: {_eq: $user_id}}) {
+    tanggal
     created_at
     foto
     id
