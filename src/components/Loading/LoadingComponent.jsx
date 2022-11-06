@@ -3,7 +3,7 @@ import React from "react";
 
 const LoadingComponent = () => {
   return (
-    <div className="h-[300px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
+    <div className="h-[504px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
       <Spinner color="gray" size="xl" light={true} />
     </div>
   );

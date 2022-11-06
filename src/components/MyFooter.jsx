@@ -15,51 +15,38 @@ const MyFooter = () => {
         <div className="flex w-full py-8 px-12 md:px-0 flex-wrap container justify-between flex-col md:flex-row gap-12">
           <div className="flex flex-col justify-center">
             <Footer.LinkGroup>
-              <Logo/>
+              <Logo />
             </Footer.LinkGroup>
           </div>
           <div>
-            <Footer.Title className="text-slate-500" title="help center" />
-            <Footer.LinkGroup className="flex flex-col text-slate-500">
-              <Footer.Link href="#">Discord Server</Footer.Link>
-              <Footer.Link href="#">Twitter</Footer.Link>
-              <Footer.Link href="#">Facebook</Footer.Link>
-              <Footer.Link href="#">Contact Us</Footer.Link>
-            </Footer.LinkGroup>
-          </div>
-          <div>
-            <Footer.Title className="text-slate-500" title="legal" />
-            <Footer.LinkGroup className="flex flex-col text-slate-500">
+            <h3 className="mb-2 text-sm font-semibold uppercase ">Legal</h3>
+            <Footer.LinkGroup className="flex flex-col text-gray-900">
               <Footer.Link href="#">Privacy Policy</Footer.Link>
-              <Footer.Link href="#">Licensing</Footer.Link>
               <Footer.Link href="#">Terms & Conditions</Footer.Link>
             </Footer.LinkGroup>
           </div>
-        </div>
-        <div className="w-full bg-slate-400 text-slate-500 py-4 px-4 sm:flex sm:items-center sm:justify-between">
-          <div className="container flex justify-between items-center">
-            <Footer.Copyright href="#" by=" Daffa Damar" year={2022} />
-            <div className="flex space-x-6 sm:mt-0 sm:justify-center">
+          <div>
+            <h3 className="mb-2 text-sm font-semibold uppercase">
+              Social Media
+            </h3>
+            <Footer.LinkGroup className="flex gap-5 text-gray-900">
               <a href="https://github.com/daffadmr" target="blank">
-                <FontAwesomeIcon
-                  icon={faGithubSquare}
-                  className="text-gray-500 text-2xl"
-                />
+                <FontAwesomeIcon icon={faGithubSquare} className=" text-2xl" />
               </a>
               <a href="https://twitter.com/daffadmr" target="blank">
-                <FontAwesomeIcon
-                  icon={faTwitterSquare}
-                  className="text-gray-500 text-2xl"
-                />
+                <FontAwesomeIcon icon={faTwitterSquare} className=" text-2xl" />
               </a>
               <a href="https://www.facebook.com/" target="blank">
                 <FontAwesomeIcon
                   icon={faFacebookSquare}
-                  className="text-gray-500 text-2xl"
+                  className=" text-2xl"
                 />
               </a>
-            </div>
+            </Footer.LinkGroup>
           </div>
+        </div>
+        <div className="w-full bg-slate-400 text-slate-500 py-4 px-4 text-center">
+          <Footer.Copyright href="#" by=" Daffa Damar" year={2022} />
         </div>
       </div>
     </Footer>
