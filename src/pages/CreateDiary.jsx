@@ -119,6 +119,10 @@ const InputDiari = () => {
                   accept="image/png, image/jpg, image/jpeg"
                   onChange={handleUploadChange}
                 />
+                <div className="flex gap-5 items-center py-4">
+                  <p>Foto:</p>
+                  <img src={data.foto} alt="" width={100} />
+                </div>
               </div>
             </div>
             <div className="pt-6">
