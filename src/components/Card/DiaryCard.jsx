@@ -5,7 +5,14 @@ import ReactMarkdown from "react-markdown";
 import { Dropdown } from "flowbite-react";
 import remarkGfm from "remark-gfm";
 
-const DiaryCard = ({ id, judul, created_at, isi, foto, deleteDiaryById }) => {
+const DiaryCard = ({
+  id,
+  judul,
+  tanggal,
+  isi,
+  foto,
+  deleteDiaryById,
+}) => {
   return (
     <div className="relative">
       <div className="absolute right-9 top-10 z-10 hover:bg-slate-200 rounded-full pr-2 py-2">
@@ -29,7 +36,9 @@ const DiaryCard = ({ id, judul, created_at, isi, foto, deleteDiaryById }) => {
       >
         <div className="diary-heading">
           <p className="text-end pb-2 flex justify-between relative">
-            <Moment local format="D MMMM, YYYY">{created_at}</Moment>
+            <Moment format="D MMMM, YYYY">
+              {tanggal}
+            </Moment>
           </p>
           <p className="text-2xl">
             <strong>{judul}</strong>
