@@ -134,7 +134,7 @@ const EditDiary = () => {
               />
               {!!data?.foto && (
                 <div className="flex gap-5 items-center py-4">
-                  <p>foto saat ini:</p>
+                  <p>Foto saat ini:</p>
                   <img src={data.foto} alt="" width={100} />
                 </div>
               )}
