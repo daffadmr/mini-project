@@ -6,7 +6,7 @@ const ProductFeature = ({FontAwesomeIcon, icon, productTitle, productText}) => {
       <FontAwesomeIcon icon={icon} className="text-8xl text-gray-900" />
       <div>
         <h3 className="font-bold text-center">{productTitle}</h3>
-        <p className="text-justify">
+        <p className="text-center">
           {productText}
         </p>
       </div>
