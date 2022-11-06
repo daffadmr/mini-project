@@ -1,6 +1,6 @@
 import "react-datepicker/dist/react-datepicker.css";
 import Cookies from "js-cookie";
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import DiaryCard from "../components/Card/DiaryCard";
@@ -19,12 +19,13 @@ import { DELETE_DIARY } from "../GraphQL/mutations";
 import { FILTER_DIARY, GET_USER, SEARCH_DIARY } from "../GraphQL/queries";
 import { DIARY_USER_SUBS } from "../GraphQL/subscriptions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [date, setDate] = useState("");
+  const [showScrollButton, setScrollButton] = useState(false);
   const userId = Cookies.get("userId");
 
   const { loading, data } = useQuery(GET_USER, {
@@ -98,6 +99,18 @@ const Dashboard = () => {
       },
     });
   };
+
+  useEffect(() => {
+    const handleScrollButton = () => {
+      window.pageYOffset > 100 ? setScrollButton(true) : setScrollButton(false);
+    };
+
+    window.addEventListener("scroll", handleScrollButton);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollButton);
+    };
+  }, []);
 
   if (loading) {
     return <LoadingPage />;
@@ -209,6 +222,16 @@ const Dashboard = () => {
               })
             )}
           </div>
+          <button
+        className={`${
+          showScrollButton ? "fixed" : "hidden"
+        } rounded-lg p-4 bottom-[40px] right-[40px] bg-gray-900 text-white`}
+        onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        }}
+      >
+        <FontAwesomeIcon icon={faArrowUp}/>
+      </button>
         </div>
       </div>
     </>
