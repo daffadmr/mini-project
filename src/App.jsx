@@ -1,11 +1,15 @@
 import "./App.css";
 import SetupRouter from "./routes/SetupRouter";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
+  const helmetContext = {};
   return (
-    <div className="font-inter overflow-x-hidden">
+    <HelmetProvider context={helmetContext}>
+      <div className="font-inter overflow-x-hidden">
         <SetupRouter />
-    </div>
+      </div>
+    </HelmetProvider>
   );
 }
 
