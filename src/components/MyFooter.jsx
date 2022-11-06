@@ -19,13 +19,6 @@ const MyFooter = () => {
             </Footer.LinkGroup>
           </div>
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase ">Legal</h3>
-            <Footer.LinkGroup className="flex flex-col text-gray-900">
-              <Footer.Link href="#">Privacy Policy</Footer.Link>
-              <Footer.Link href="#">Terms & Conditions</Footer.Link>
-            </Footer.LinkGroup>
-          </div>
-          <div>
             <h3 className="mb-2 text-sm font-semibold uppercase">
               Social Media
             </h3>
@@ -42,6 +35,13 @@ const MyFooter = () => {
                   className=" text-2xl"
                 />
               </a>
+            </Footer.LinkGroup>
+          </div>
+          <div>
+            <h3 className="mb-2 text-sm font-semibold uppercase ">Address</h3>
+            <Footer.LinkGroup className="flex flex-col text-gray-900">
+              <Footer.Link href="#">Jakarta, Indonesia</Footer.Link>
+              <Footer.Link href="#">10210</Footer.Link>
             </Footer.LinkGroup>
           </div>
         </div>
