@@ -1,16 +1,24 @@
 import React from "react";
+import heroImage from "../assets/png/heroImage.jpg";
+import ProductFeature from "../components/Card/ProductFeature";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,
   faCalendar,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import heroImage from "../assets/png/heroImage.jpg";
-import ProductFeature from "../components/Card/ProductFeature";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Diariku</title>
+        <meta
+          name="description"
+          content="Diari digital untuk mengeluarkan keluh kesah"
+        />
+      </Helmet>
       <div className="bg-slate-100">
         <div className="container pt-24 flex flex-col sm:justify-between lg:flex-row items-center gap-5 lg:gap-20 px-10 sm:px-24 h-[100vw] sm:h-auto">
           <h1 className="text-4xl font-extrabold">

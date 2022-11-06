@@ -1,15 +1,16 @@
-import { useMutation, useQuery } from "@apollo/client";
-import MDEditor from "@uiw/react-md-editor";
-import { Button, FileInput, Label, TextInput } from "flowbite-react";
 import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import MDEditor from "@uiw/react-md-editor";
 import Swal from "sweetalert2";
-import { UPDATE_DIARY } from "../GraphQL/mutations";
+import LoadingPage from "../components/Loading/LoadingPage";
 import { GET_DIARY_DETAIL } from "../GraphQL/queries";
+import { UPDATE_DIARY } from "../GraphQL/mutations";
+import { Button, FileInput, Label, TextInput } from "flowbite-react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
 import { storage } from "../configs/firebaseConfig";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { useEffect } from "react";
-import LoadingPage from "../components/Loading/LoadingPage";
+import { Helmet } from "react-helmet-async";
 
 const EditDiary = () => {
   const { id } = useParams();
@@ -81,6 +82,11 @@ const EditDiary = () => {
   }
 
   return (
+    <>
+    <Helmet>
+        <title>Diariku - Edit Diari</title>
+        <meta name="description" content="Edit diari" />
+      </Helmet>
     <div className="container">
       <div className="flex items-center flex-col">
         <Link to="/dashboard" className="self-start">
@@ -142,6 +148,7 @@ const EditDiary = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

@@ -20,6 +20,7 @@ import { FILTER_DIARY, GET_USER, SEARCH_DIARY } from "../GraphQL/queries";
 import { DIARY_USER_SUBS } from "../GraphQL/subscriptions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
@@ -103,46 +104,75 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="bg-slate-100">
-      <div className="container flex flex-col lg:flex-row gap-10 lg:justify-center text-justify py-10 md:p-10 relative min-h-[673px] overflow-x-hidden">
-        <UserCard avatar={avatar} username={username} />
-        <div className="pt-0 px-5 md:px-0 flex flex-col gap-5 w-full lg:max-w-xl xl:max-w-3xl">
-          <div className="flex justify-between">
-            <ReactDatePicker
-              selected={date}
-              onChange={handleChange}
-              dateFormat="d/MM/yyyy"
-              className="w-[130px] rounded-lg border border-slate-300 py-1 px-5 text-sm justify-self-end"
-              placeholderText={"Filter by Date"}
-            />
-            <button
-              className="w-[100px] text-white text-sm bg-gray-800 border border-transparent hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800 group flex h-min items-center justify-center p-1 text-center font-medium focus:z-10 rounded-lg"
-              onClick={() => window.location.reload(false)}
-            >
-              Show All
-            </button>
-          </div>
-          <form onSubmit={searchDiarys} className="flex">
-            <input
-              type="text"
-              className="rounded-r-none rounded-l-lg bg-gray-50 border border-slate-300 text-gray-900 focus:ring-blue-500 block flex-1 text-sm p-2.5  w-full lg:max-w-xl xl:max-w-3xl"
-              placeholder="Search Diari"
-              onChange={handleChangeSearch}
-              value={search}
-            />
-            <Button type="submit" color="dark" className="rounded-l-none">
-              <FontAwesomeIcon icon={faSearch} className="p-1" />
-            </Button>
-          </form>
-          {searchLoading ? (
-            <LoadingComponent />
-          ) : searchData ? (
-            searchData?.diari.length === 0 ? (
+    <>
+      <Helmet>
+        <title>Diariku - Dashboard</title>
+        <meta name="description" content="Dashboard diariku untuk mengatur diari" />
+      </Helmet>
+      <div className="bg-slate-100">
+        <div className="container flex flex-col lg:flex-row gap-10 lg:justify-center text-justify py-10 md:p-10 relative min-h-[673px] overflow-x-hidden">
+          <UserCard avatar={avatar} username={username} />
+          <div className="pt-0 px-5 md:px-0 flex flex-col gap-5 w-full lg:max-w-xl xl:max-w-3xl">
+            <div className="flex justify-between">
+              <ReactDatePicker
+                selected={date}
+                onChange={handleChange}
+                dateFormat="d/MM/yyyy"
+                className="w-[130px] rounded-lg border border-slate-300 py-1 px-5 text-sm justify-self-end"
+                placeholderText={"Filter by Date"}
+              />
+              <button
+                className="w-[100px] text-white text-sm bg-gray-800 border border-transparent hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800 group flex h-min items-center justify-center p-1 text-center font-medium focus:z-10 rounded-lg"
+                onClick={() => window.location.reload(false)}
+              >
+                Show All
+              </button>
+            </div>
+            <form onSubmit={searchDiarys} className="flex">
+              <input
+                type="text"
+                className="rounded-r-none rounded-l-lg bg-gray-50 border border-slate-300 text-gray-900 focus:ring-blue-500 block flex-1 text-sm p-2.5  w-full lg:max-w-xl xl:max-w-3xl"
+                placeholder="Search Diari"
+                onChange={handleChangeSearch}
+                value={search}
+              />
+              <Button type="submit" color="dark" className="rounded-l-none">
+                <FontAwesomeIcon icon={faSearch} className="p-1" />
+              </Button>
+            </form>
+            {searchLoading ? (
+              <LoadingComponent />
+            ) : searchData ? (
+              searchData?.diari.length === 0 ? (
+                <div className="h-[600px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
+                  <p>Tidak ada diari</p>
+                </div>
+              ) : (
+                searchData?.diari.map(
+                  ({ id, judul, isi, created_at, foto }) => {
+                    return (
+                      <DiaryCard
+                        loading={searchLoading}
+                        deleteDiaryById={deleteDiaryById}
+                        key={id}
+                        id={id}
+                        judul={judul}
+                        isi={isi}
+                        created_at={created_at}
+                        foto={foto}
+                      />
+                    );
+                  }
+                )
+              )
+            ) : filterLoading ? (
+              <LoadingComponent />
+            ) : filterData?.diari.length === 0 ? (
               <div className="h-[600px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
                 <p>Tidak ada diari</p>
               </div>
-            ) : (
-              searchData?.diari.map(({ id, judul, isi, created_at, foto }) => {
+            ) : filterData ? (
+              filterData?.diari.map(({ id, judul, isi, created_at, foto }) => {
                 return (
                   <DiaryCard
                     loading={searchLoading}
@@ -156,53 +186,32 @@ const Dashboard = () => {
                   />
                 );
               })
-            )
-          ) : filterLoading ? (
-            <LoadingComponent />
-          ) : filterData?.diari.length === 0 ? (
-            <div className="h-[600px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
-              <p>Tidak ada diari</p>
-            </div>
-          ) : filterData ? (
-            filterData?.diari.map(({ id, judul, isi, created_at, foto }) => {
-              return (
-                <DiaryCard
-                  loading={searchLoading}
-                  deleteDiaryById={deleteDiaryById}
-                  key={id}
-                  id={id}
-                  judul={judul}
-                  isi={isi}
-                  created_at={created_at}
-                  foto={foto}
-                />
-              );
-            })
-          ) : subsLoading ? (
-            <LoadingComponent />
-          ) : dataDiary.diari.length === 0 ? (
-            <div className="h-[600px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
-              <p>Tidak ada diari</p>
-            </div>
-          ) : (
-            dataDiary?.diari.map(({ id, judul, isi, created_at, foto }) => {
-              return (
-                <DiaryCard
-                  loading={searchLoading}
-                  deleteDiaryById={deleteDiaryById}
-                  key={id}
-                  id={id}
-                  judul={judul}
-                  isi={isi}
-                  created_at={created_at}
-                  foto={foto}
-                />
-              );
-            })
-          )}
+            ) : subsLoading ? (
+              <LoadingComponent />
+            ) : dataDiary.diari.length === 0 ? (
+              <div className="h-[600px] flex flex-col items-center pt-24 md:pt-0 md:justify-center">
+                <p>Tidak ada diari</p>
+              </div>
+            ) : (
+              dataDiary?.diari.map(({ id, judul, isi, created_at, foto }) => {
+                return (
+                  <DiaryCard
+                    loading={searchLoading}
+                    deleteDiaryById={deleteDiaryById}
+                    key={id}
+                    id={id}
+                    judul={judul}
+                    isi={isi}
+                    created_at={created_at}
+                    foto={foto}
+                  />
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

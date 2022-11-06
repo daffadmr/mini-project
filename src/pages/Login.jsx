@@ -1,14 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useLazyQuery } from "@apollo/client";
 import React, { useEffect } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { Button } from "flowbite-react";
 import ModalRegister from "../components/ModalRegister";
-import { GET_USER_DATA } from "../GraphQL/queries";
 import Swal from "sweetalert2";
 import LoadingPage from "../components/Loading/LoadingPage";
+import { GET_USER_DATA } from "../GraphQL/queries";
+import { useLazyQuery } from "@apollo/client";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "flowbite-react";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [getUser, { data, loading }] = useLazyQuery(GET_USER_DATA);
@@ -69,52 +69,63 @@ const Login = () => {
   if (loading) return <LoadingPage />;
 
   return (
-    <div className="flex flex-col align-middle justify-center justify-items-center h-[640px]">
-      <h1 className="text-2xl font-semibold text-center text-gray-900 py-8">Login</h1>
-      <form
-        className="bg-slate-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80 self-center"
-        onSubmit={handleLoginSubmit}
-      >
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="email"
-            onChange={handleChangeEmail}
-            value={email}
-            placeholder="ujangkopling@gmail.com"
-          />
+    <>
+      <Helmet>
+        <title>Diariku - Log in or Sign up</title>
+        <meta
+          name="description"
+          content="Log in atau sign up ke diariku"
+        />
+      </Helmet>
+      <div className="flex flex-col align-middle justify-center justify-items-center h-[640px]">
+        <h1 className="text-2xl font-semibold text-center text-gray-900 py-8">
+          Login
+        </h1>
+        <form
+          className="bg-slate-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80 self-center"
+          onSubmit={handleLoginSubmit}
+        >
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="email"
+              onChange={handleChangeEmail}
+              value={email}
+              placeholder="ujangkopling@gmail.com"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              onChange={handleChangePassword}
+              value={password}
+              placeholder="********"
+            />
+          </div>
+          <Button color="dark" type="submit" className="self-center">
+            Sign In
+          </Button>
+        </form>
+        <div className="pt-4 text-center">
+          Belum punya akun? Daftar di <ModalRegister />
         </div>
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            onChange={handleChangePassword}
-            value={password}
-            placeholder="********"
-          />
-        </div>
-        <Button color="dark" type="submit" className="self-center">
-          Sign In
-        </Button>
-      </form>
-      <div className="pt-4 text-center">
-        Belum punya akun? Daftar di <ModalRegister />
       </div>
-    </div>
+    </>
   );
 };
 
