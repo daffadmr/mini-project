@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import EditDiary from "../pages/EditDiary";
 import ScrollToTop from "../components/ScrollToTop";
+import NotFound from "../pages/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const SetupRouters = () => {
@@ -28,6 +29,7 @@ const SetupRouters = () => {
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
