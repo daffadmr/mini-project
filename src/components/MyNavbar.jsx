@@ -1,13 +1,13 @@
-import { useSubscription } from "@apollo/client";
-import { Dropdown, Navbar } from "flowbite-react";
-import { Link, useNavigate } from "react-router-dom";
-import { USER_SUBS } from "../GraphQL/subscriptions";
 import Auth from "../utils/Auth";
 import Cookies from "js-cookie";
 import React from "react";
 import LoadingDot from "../assets/svg/LoadingDot";
 import Logo from "../assets/svg/Logo";
 import Swal from "sweetalert2";
+import { useSubscription } from "@apollo/client";
+import { Dropdown, Navbar } from "flowbite-react";
+import { Link, useNavigate } from "react-router-dom";
+import { USER_SUBS } from "../GraphQL/subscriptions";
 
 const MyNavbar = () => {
   const userId = Cookies.get("userId");

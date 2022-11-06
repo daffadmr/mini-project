@@ -1,6 +1,6 @@
-import { Footer } from "flowbite-react";
 import React from "react";
 import Logo from "../assets/svg/Logo";
+import { Footer } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithubSquare,
