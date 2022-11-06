@@ -123,7 +123,7 @@ const Dashboard = () => {
         <meta name="description" content="Dashboard diariku untuk mengatur diari" />
       </Helmet>
       <div className="bg-slate-100">
-        <div className="container flex flex-col lg:flex-row gap-10 lg:justify-center text-justify py-10 md:p-10 relative min-h-[673px] overflow-x-hidden">
+        <div className="container flex flex-col lg:flex-row gap-10 lg:justify-center text-justify py-10 md:p-10 relative min-h-[698px] overflow-x-hidden">
           <UserCard avatar={avatar} username={username} />
           <div className="pt-0 px-5 md:px-0 flex flex-col gap-5 w-full lg:max-w-xl xl:max-w-3xl">
             <div className="flex justify-between">
@@ -162,7 +162,7 @@ const Dashboard = () => {
                 </div>
               ) : (
                 searchData?.diari.map(
-                  ({ id, judul, isi, created_at, foto }) => {
+                  ({ id, judul, isi, tanggal, foto }) => {
                     return (
                       <DiaryCard
                         loading={searchLoading}
@@ -171,7 +171,7 @@ const Dashboard = () => {
                         id={id}
                         judul={judul}
                         isi={isi}
-                        created_at={created_at}
+                        tanggal={tanggal}
                         foto={foto}
                       />
                     );
@@ -185,7 +185,7 @@ const Dashboard = () => {
                 <p>Tidak ada diari</p>
               </div>
             ) : filterData ? (
-              filterData?.diari.map(({ id, judul, isi, created_at, foto }) => {
+              filterData?.diari.map(({ id, judul, isi, tanggal, foto }) => {
                 return (
                   <DiaryCard
                     loading={searchLoading}
@@ -194,7 +194,7 @@ const Dashboard = () => {
                     id={id}
                     judul={judul}
                     isi={isi}
-                    created_at={created_at}
+                    tanggal={tanggal}
                     foto={foto}
                   />
                 );
@@ -206,7 +206,7 @@ const Dashboard = () => {
                 <p>Tidak ada diari</p>
               </div>
             ) : (
-              dataDiary?.diari.map(({ id, judul, isi, created_at, foto }) => {
+              dataDiary?.diari.map(({ id, judul, isi,created_at, tanggal, foto }) => {
                 return (
                   <DiaryCard
                     loading={searchLoading}
@@ -216,6 +216,7 @@ const Dashboard = () => {
                     judul={judul}
                     isi={isi}
                     created_at={created_at}
+                    tanggal={tanggal}
                     foto={foto}
                   />
                 );
