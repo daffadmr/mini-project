@@ -56,6 +56,7 @@ query SearchQuery($input: String, $user_id: Int) {
     foto
     isi
     judul
+    tanggal
     created_at
     user_id
   }
