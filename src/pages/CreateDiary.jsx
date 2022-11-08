@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
-import { INSERT_DIARY } from "../GraphQL/mutations";
+import { INSERT_DIARY } from "../graphql/mutations";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { storage } from "../configs/firebaseConfig";
@@ -120,7 +120,7 @@ const InputDiari = () => {
                   onChange={handleUploadChange}
                 />
                 <div className="flex gap-5 items-center py-4">
-                  <p>Foto:</p>
+                  <p>Preview Foto:</p>
                   <img src={data.foto} alt="" width={100} />
                 </div>
               </div>

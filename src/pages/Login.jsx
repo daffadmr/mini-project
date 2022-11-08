@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import ModalRegister from "../components/ModalRegister";
 import Swal from "sweetalert2";
 import LoadingPage from "../components/Loading/LoadingPage";
-import { GET_USER_DATA } from "../GraphQL/queries";
+import { GET_USER_DATA } from "../graphql/queries";
 import { useLazyQuery } from "@apollo/client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

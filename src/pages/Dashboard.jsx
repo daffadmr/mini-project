@@ -15,9 +15,9 @@ import {
 } from "@apollo/client";
 import { Button } from "flowbite-react";
 import { useState } from "react";
-import { DELETE_DIARY } from "../GraphQL/mutations";
-import { FILTER_DIARY, GET_USER, SEARCH_DIARY } from "../GraphQL/queries";
-import { DIARY_USER_SUBS } from "../GraphQL/subscriptions";
+import { DELETE_DIARY } from "../graphql/mutations";
+import { FILTER_DIARY, GET_USER, SEARCH_DIARY } from "../graphql/queries";
+import { DIARY_USER_SUBS } from "../graphql/subscriptions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";

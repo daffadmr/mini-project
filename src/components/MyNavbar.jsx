@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { useSubscription } from "@apollo/client";
 import { Dropdown, Navbar } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
-import { USER_SUBS } from "../GraphQL/subscriptions";
+import { USER_SUBS } from "../graphql/subscriptions";
 
 const MyNavbar = () => {
   const userId = Cookies.get("userId");
