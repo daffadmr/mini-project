@@ -13,13 +13,9 @@ module.exports = {
       }
     },
     extend: {
-      fontFamily: {
-        'inter': ['Inter']
-      },
     },
   },
   plugins: [
     require('flowbite/plugin'),
   ],
-
 }

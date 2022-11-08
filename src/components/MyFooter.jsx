@@ -10,7 +10,7 @@ import {
 
 const MyFooter = () => {
   return (
-    <Footer className="font-inter rounded-none">
+    <Footer className="rounded-none">
       <div className="w-full bg-slate-300">
         <div className="flex w-full py-8 px-12 md:px-0 flex-wrap container justify-between flex-col md:flex-row gap-12">
           <div className="flex flex-col justify-center pl-3">

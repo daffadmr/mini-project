@@ -6,7 +6,7 @@ function App() {
   const helmetContext = {};
   return (
     <HelmetProvider context={helmetContext}>
-      <div className="font-inter overflow-x-hidden">
+      <div className="overflow-x-hidden">
         <SetupRouter />
       </div>
     </HelmetProvider>
