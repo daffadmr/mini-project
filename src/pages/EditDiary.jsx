@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import Swal from "sweetalert2";
-import LoadingPage from "../components/Loading/LoadingPage";
+import LoadingPage from "../components/Loadings/LoadingPage";
 import { GET_DIARY_DETAIL } from "../graphql/queries";
 import { UPDATE_DIARY } from "../graphql/mutations";
 import { Button, FileInput, Label, TextInput } from "flowbite-react";

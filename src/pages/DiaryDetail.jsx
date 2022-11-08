@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import LoadingPage from "../components/Loading/LoadingPage";
+import LoadingPage from "../components/Loadings/LoadingPage";
 import Swal from "sweetalert2";
 import { useMutation, useQuery } from "@apollo/client";
 import { Link, useNavigate, useParams } from "react-router-dom";

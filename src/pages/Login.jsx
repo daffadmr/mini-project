@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 import ModalRegister from "../components/ModalRegister";
 import Swal from "sweetalert2";
-import LoadingPage from "../components/Loading/LoadingPage";
+import LoadingPage from "../components/Loadings/LoadingPage";
 import { GET_USER_DATA } from "../graphql/queries";
 import { useLazyQuery } from "@apollo/client";
 import { useState } from "react";

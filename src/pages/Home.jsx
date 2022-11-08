@@ -1,6 +1,6 @@
 import React from "react";
 import heroImage from "../assets/png/heroImage.jpg";
-import ProductFeature from "../components/Card/ProductFeature";
+import ProductFeature from "../components/Cards/ProductFeature";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,

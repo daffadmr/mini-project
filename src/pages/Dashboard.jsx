@@ -3,10 +3,10 @@ import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import ReactDatePicker from "react-datepicker";
 import Swal from "sweetalert2";
-import DiaryCard from "../components/Card/DiaryCard";
-import UserCard from "../components/Card/UserCard";
-import LoadingPage from "../components/Loading/LoadingPage";
-import LoadingComponent from "../components/Loading/LoadingComponent";
+import DiaryCard from "../components/Cards/DiaryCard";
+import UserCard from "../components/Cards/UserCard";
+import LoadingPage from "../components/Loadings/LoadingPage";
+import LoadingComponent from "../components/Loadings/LoadingComponent";
 import {
   useLazyQuery,
   useMutation,
