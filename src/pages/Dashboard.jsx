@@ -136,7 +136,7 @@ const Dashboard = () => {
               />
               <button
                 className="w-[100px] text-white text-sm bg-gray-800 border border-transparent hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800 group flex h-min items-center justify-center p-1 text-center font-medium focus:z-10 rounded-lg"
-                onClick={() => window.location.reload(false)}
+                onClick={() => window.location.reload()}
               >
                 Show All
               </button>
