@@ -49,7 +49,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 Daffa Damar - [@daffadmr](https://twitter.com/daffadmr) - daffaardhika@gmail.com
 
-Project Link: [https://github.com/daffadmr/diariku](https://diariku.netlify.app/){:target="_blank"}
+Project Link: [https://diariku.netlify.app/](https://diariku.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
