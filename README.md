@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/daffadmr/diariku">
+  <a href="https://diariku.netlify.app/">
     <img src="../main/src/assets/png/logopng.png">
   </a>
 
