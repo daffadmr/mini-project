@@ -56,7 +56,7 @@ const DiariDetail = () => {
         <meta name="description" content="Detail diari" />
       </Helmet>
       <div className="bg-slate-100" data-color-mode="light">
-        <div className="container flex items-center flex-col pb-20 min-h-[698px] overflow-x-hidden">
+        <div className="container flex items-center flex-col pb-20 min-h-[730px] overflow-x-hidden">
           <div className="flex justify-between w-full px-5">
             <Link to="/dashboard" className="self-start">
               <p className="px-3 py-5 lg:px-0 lg:py-5 underline">

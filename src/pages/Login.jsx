@@ -78,7 +78,7 @@ const Login = () => {
           content="Log in atau sign up ke diariku"
         />
       </Helmet>
-      <div className="flex flex-col align-middle justify-center justify-items-center h-[698px]">
+      <div className="flex flex-col align-middle justify-center justify-items-center min-h-[730px]">
         <h1 className="text-2xl font-semibold text-center text-gray-900 py-8">
           Login
         </h1>
