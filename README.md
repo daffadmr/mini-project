@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/daffadmr/mini-project">
+  <a href="https://github.com/daffadmr/diariku">
     <svg
       width="114"
       height="31"
@@ -21,17 +21,16 @@
   </a>
 
   <p align="center">
-    Diariku merupakan project yang dibuat untuk memenuhi tugas mini-project di Alterra Academy kelas Front End
+    Diariku merupakan project yang dibuat untuk memenuhi tugas diariku di Alterra Academy kelas Front End
 </div>
 
 <!-- ABOUT THE PROJECT -->
 ## Tentang Project
 
-![Landing Page](../mini-project/src/assets/png/project.png)
+![Landing Page](../diariku/src/assets/png/project.png)
 
 Project ini merupakan diari pribadi berbasis website. Anda dapat membuat, mengubah, menghapus, dan mencari diari.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -43,7 +42,6 @@ Project ini merupakan diari pribadi berbasis website. Anda dapat membuat, mengub
 * [![Apollo][Apollo]][Apollo-url]
 * [![Postgres][Postgres]][Postgres-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Penggunaan
@@ -52,14 +50,12 @@ Ada bug di saat login, jadi jika ingin menggunakan fitur yang ada di website ini
 * password: jajang12
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -68,7 +64,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 Daffa Damar - [@daffadmr](https://twitter.com/daffadmr) - daffaardhika@gmail.com
 
-Project Link: [https://github.com/daffadmr/mini-project](https://github.com/daffadmr/mini-project)
+Project Link: [https://github.com/daffadmr/diariku](https://github.com/daffadmr/diariku)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
