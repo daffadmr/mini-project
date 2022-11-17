@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://diariku.netlify.app/" target="blank">
+  <a href="https://diariku.netlify.app/">
     <img src="../main/src/assets/png/logopng.png">
   </a>
 
@@ -49,7 +49,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 Daffa Damar - [@daffadmr](https://twitter.com/daffadmr) - daffaardhika@gmail.com
 
-Project Link: [https://github.com/daffadmr/diariku](https://github.com/daffadmr/diariku)
+Project Link: [https://github.com/daffadmr/diariku](https://diariku.netlify.app/){:target="_blank"}
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
