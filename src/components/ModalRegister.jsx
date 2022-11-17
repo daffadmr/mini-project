@@ -5,7 +5,7 @@ import React from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { storage } from "../configs/firebaseConfig";
-import { INSERT_USER } from "../GraphQL/mutations";
+import { INSERT_USER } from "../graphql/mutations";
 
 const ModalRegister = () => {
   const [showModal, setShowModal] = useState(false);
