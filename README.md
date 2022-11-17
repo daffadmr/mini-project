@@ -27,7 +27,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Tentang Project
 
-![Landing Page](../diariku/src/assets/png/project.png)
+![Landing Page](../main/src/assets/png/project.png)
 
 Project ini merupakan diari pribadi berbasis website. Anda dapat membuat, mengubah, menghapus, dan mencari diari.
 
