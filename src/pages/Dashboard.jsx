@@ -17,7 +17,10 @@ import { Button } from "flowbite-react";
 import { useState } from "react";
 import { DELETE_DIARY } from "../graphql/mutations";
 import { FILTER_DIARY, GET_USER, SEARCH_DIARY } from "../graphql/queries";
-import { DIARY_USER_SUBS } from "../graphql/subscriptions";
+import {
+  DIARY_USER_SUBS,
+  DIARY_USER_SUBS_COUNT,
+} from "../graphql/subscriptions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
@@ -25,6 +28,7 @@ import { Helmet } from "react-helmet-async";
 const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [date, setDate] = useState("");
+  const [limit, setLimit] = useState(5);
   const [showScrollButton, setScrollButton] = useState(false);
   const userId = Cookies.get("userId");
 
@@ -43,9 +47,16 @@ const Dashboard = () => {
     {
       variables: {
         user_id: userId,
+        limit: limit,
       },
     }
   );
+
+  const { data: diaryCount } = useSubscription(DIARY_USER_SUBS_COUNT, {
+    variables: {
+      user_id: userId,
+    },
+  });
 
   const [deleteDiary] = useMutation(DELETE_DIARY);
 
@@ -120,7 +131,10 @@ const Dashboard = () => {
     <>
       <Helmet>
         <title>Diariku - Dashboard</title>
-        <meta name="description" content="Dashboard diariku untuk mengatur diari" />
+        <meta
+          name="description"
+          content="Dashboard diariku untuk mengatur diari"
+        />
       </Helmet>
       <div className="bg-slate-100">
         <div className="container flex flex-col lg:flex-row gap-10 lg:justify-center text-justify py-10 md:p-10 relative min-h-[698px] overflow-x-hidden">
@@ -161,22 +175,20 @@ const Dashboard = () => {
                   <p>Tidak ada diari</p>
                 </div>
               ) : (
-                searchData?.diari.map(
-                  ({ id, judul, isi, tanggal, foto }) => {
-                    return (
-                      <DiaryCard
-                        loading={searchLoading}
-                        deleteDiaryById={deleteDiaryById}
-                        key={id}
-                        id={id}
-                        judul={judul}
-                        isi={isi}
-                        tanggal={tanggal}
-                        foto={foto}
-                      />
-                    );
-                  }
-                )
+                searchData?.diari.map(({ id, judul, isi, tanggal, foto }) => {
+                  return (
+                    <DiaryCard
+                      loading={searchLoading}
+                      deleteDiaryById={deleteDiaryById}
+                      key={id}
+                      id={id}
+                      judul={judul}
+                      isi={isi}
+                      tanggal={tanggal}
+                      foto={foto}
+                    />
+                  );
+                })
               )
             ) : filterLoading ? (
               <LoadingComponent />
@@ -206,33 +218,42 @@ const Dashboard = () => {
                 <p>Tidak ada diari</p>
               </div>
             ) : (
-              dataDiary?.diari.map(({ id, judul, isi,created_at, tanggal, foto }) => {
-                return (
-                  <DiaryCard
-                    loading={searchLoading}
-                    deleteDiaryById={deleteDiaryById}
-                    key={id}
-                    id={id}
-                    judul={judul}
-                    isi={isi}
-                    created_at={created_at}
-                    tanggal={tanggal}
-                    foto={foto}
-                  />
-                );
-              })
+              <>
+                {dataDiary?.diari.map(
+                  ({ id, judul, isi, created_at, tanggal, foto }) => {
+                    return (
+                      <DiaryCard
+                        loading={searchLoading}
+                        deleteDiaryById={deleteDiaryById}
+                        key={id}
+                        id={id}
+                        judul={judul}
+                        isi={isi}
+                        created_at={created_at}
+                        tanggal={tanggal}
+                        foto={foto}
+                      />
+                    );
+                  }
+                )}
+                {limit > diaryCount?.diari_aggregate.aggregate.count ? (
+                  <></>
+                ) : (
+                  <Button color="dark" onClick={() => setLimit(limit + 5)}>Load More</Button>
+                )}
+              </>
             )}
           </div>
           <button
-        className={`${
-          showScrollButton ? "fixed" : "hidden"
-        } rounded-lg p-4 bottom-[40px] right-[40px] bg-gray-900 text-white`}
-        onClick={() => {
-          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        }}
-      >
-        <FontAwesomeIcon icon={faArrowUp}/>
-      </button>
+            className={`${
+              showScrollButton ? "fixed" : "hidden"
+            } rounded-lg p-4 bottom-[40px] right-[40px] bg-gray-900 text-white`}
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
+            <FontAwesomeIcon icon={faArrowUp} />
+          </button>
         </div>
       </div>
     </>
