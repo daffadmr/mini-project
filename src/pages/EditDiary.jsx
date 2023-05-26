@@ -83,71 +83,81 @@ const EditDiary = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Diariku - Edit Diari</title>
         <meta name="description" content="Edit diari" />
       </Helmet>
-    <div className="container">
-      <div className="flex items-center flex-col">
-        <Link to="/dashboard" className="self-start">
-          <p className="px-3 py-5 lg:px-0 lg:py-5 underline">{"<- Back to Dashboard"}</p>
-        </Link>
-        <h1 className="pt-5 pb-5 font-bold">Edit Diari</h1>
-        <form onSubmit={handleSubmit} className="w-[80vw] md:w-[50vw] pb-24">
-          <div className="flex flex-col gap-4">
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="small" value="Judul" />
-              </div>
-              <TextInput
-                id="base"
-                type="text"
-                sizing="md"
-                name="judul"
-                value={data.judul}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="base" value="Isi" />
-              </div>
-              <MDEditor
-                value={data.isi}
-                onChange={handleEditorChange}
-                data-color-mode="light"
-                preview="edit"
-                className="bg-slate-500"
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="base" value="Foto" />
-              </div>
-              <FileInput
-                id="base"
-                type="text"
-                sizing="md"
-                name="foto"
-                accept="image/png, image/jpg, image/jpeg"
-                onChange={handleUploadChange}
-              />
-              {!!data?.foto && (
-                <div className="flex gap-5 items-center py-4">
-                  <p>Foto saat ini:</p>
-                  <img src={data.foto} alt="" width={100} />
+      <div className="container">
+        <div className="flex items-center flex-col">
+          <Link to="/dashboard" className="self-start">
+            <p className="px-3 py-5 lg:px-0 lg:py-5 underline">
+              {"<- Back to Dashboard"}
+            </p>
+          </Link>
+          <h1 className="pt-5 pb-5 font-bold">Edit Diari</h1>
+          <form onSubmit={handleSubmit} className="w-[80vw] md:w-[50vw] pb-24">
+            <div className="flex flex-col gap-4">
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="small" value="Judul" />
                 </div>
-              )}
+                <TextInput
+                  id="base"
+                  type="text"
+                  sizing="md"
+                  name="judul"
+                  value={data.judul}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="base" value="Isi" />
+                </div>
+                <MDEditor
+                  value={data.isi}
+                  onChange={handleEditorChange}
+                  data-color-mode="light"
+                  preview="edit"
+                  className="bg-slate-500"
+                />
+              </div>
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="base" value="Foto" />
+                </div>
+                <FileInput
+                  id="base"
+                  type="text"
+                  sizing="md"
+                  name="foto"
+                  accept="image/png, image/jpg, image/jpeg"
+                  onChange={handleUploadChange}
+                />
+                {!!data?.foto && (
+                  <div className="flex gap-5 items-center py-4 ">
+                    <p>Foto saat ini:</p>
+                    <div className="relative">
+                      <img src={data.foto} alt="" width={100} />
+                      <div
+                        className="absolute top-0 -right-10 p-1 w-[20px] h-[20px] flex items-center justify-center text-center hover:cursor-pointer bg-slate-200 hover:bg-slate-500 rounded-full"
+                        onClick={() => setData({ ...data, foto: null })}
+                      >
+                        ✖
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="input-group mt-10">
-            <Button color={"dark"} type="submit">
-              Submit
-            </Button>
-          </div>
-        </form>
+            <div className="input-group mt-10">
+              <Button color={"dark"} type="submit">
+                Submit
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
