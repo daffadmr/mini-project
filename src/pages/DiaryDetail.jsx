@@ -11,6 +11,7 @@ import { Button } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
+import rehypeRaw from "rehype-raw";
 
 const DiariDetail = () => {
   const { id } = useParams();
@@ -56,7 +57,7 @@ const DiariDetail = () => {
         <meta name="description" content="Detail diari" />
       </Helmet>
       <div className="bg-slate-100" data-color-mode="light">
-        <div className="container flex items-center flex-col pb-20 min-h-[730px] overflow-x-hidden">
+        <div className="container flex items-center flex-col gap-12 pb-20 min-h-[730px] overflow-x-hidden">
           <div className="flex justify-between w-full px-5">
             <Link to="/dashboard" className="self-start">
               <p className="px-3 py-5 lg:px-0 lg:py-5 underline">
@@ -78,19 +79,17 @@ const DiariDetail = () => {
 
           {data?.diari[0].foto === null ? (
             <div
-              className="flex flex-col items-center min-h-[100px] w-[80vw] lg:w-[50vw] bg-white rounded-lg p-10 mt-40"
+              className="flex flex-col min-h-[500px] w-[80vw] lg:w-full bg-white rounded-lg p-10"
               key={data?.diari[0].id}
             >
               <h1 className="pb-5">
                 <strong>{data?.diari[0].judul}</strong>
               </h1>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {data?.diari[0].isi}
-              </ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} children={data?.diari[0].isi}/>
             </div>
           ) : (
             <div
-              className="flex flex-col items-center justify-center min-h-[200px] w-[80vw] lg:w-[50vw] bg-white rounded-lg p-10 mt-28 md:mt-0"
+              className="flex flex-col items-center justify-center min-h-[200px] w-[80vw] lg:w-full bg-white rounded-lg p-10 md:mt-0"
               key={data?.diari[0].id}
             >
               <h1 className="pb-5">
@@ -102,9 +101,7 @@ const DiariDetail = () => {
                   alt=""
                   className="max-h-[500px] mb-2 rounded-lg"
                 />
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {data?.diari[0].isi}
-                </ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} children={data?.diari[0].isi}/>
               </div>
             </div>
           )}

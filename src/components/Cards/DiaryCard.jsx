@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import ReactMarkdown from "react-markdown";
 import { Dropdown } from "flowbite-react";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const DiaryCard = ({
   id,
@@ -44,12 +45,12 @@ const DiaryCard = ({
             <strong>{judul}</strong>
           </p>
         </div>
-        <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify">
+        <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
           {foto === null ? (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{isi}</ReactMarkdown>
+            <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}/>
           ) : (
             <>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{isi}</ReactMarkdown>
+              <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}/>
               <img
                 src={foto}
                 alt=""
