@@ -15,7 +15,7 @@ const Login = () => {
   const [getUser, { data, loading }] = useLazyQuery(GET_USER_DATA);
 
   const navigate = useNavigate();
-  const dataUser = data?.user[0];
+  const dataUser = data?.users[0];
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    if (password === "") {
+    if (password.length === 0) {
       Swal.fire({
         title: "Warning!",
         text: "Lengkapi login",
@@ -46,26 +46,26 @@ const Login = () => {
         },
       });
     }
+  };
 
-    if (data?.user.length === 0) {
+  useEffect(() => {
+    if (data?.users.length === 1) {
+      Cookies.set("userId", dataUser?.id, { path: "/" });
+      Cookies.set("auth", true, { path: "/" });
+      return navigate("/dashboard", { replace: true });
+    } 
+    
+    if (data?.users.length === 0) {
+      setEmail("")
+      setPassword("")
       Swal.fire({
         title: "Error!",
         text: "Email atau Password salah",
         icon: "error",
         confirmButtonText: "OK",
       });
-      setEmail("");
-      setPassword("");
     }
-  };
-
-  useEffect(() => {
-    if (data?.user.length === 1) {
-      Cookies.set("userId", dataUser?.id, { path: "/" });
-      Cookies.set("auth", true, { path: "/" });
-      return navigate("/dashboard", { replace: true });
-    }
-  }, [dataUser]);
+  }, [data]);
 
   if (loading) return <LoadingPage />;
 
@@ -73,10 +73,7 @@ const Login = () => {
     <>
       <Helmet>
         <title>Diariku - Log in or Sign up</title>
-        <meta
-          name="description"
-          content="Log in atau sign up ke diariku"
-        />
+        <meta name="description" content="Log in atau sign up ke diariku" />
       </Helmet>
       <div className="flex flex-col align-middle justify-center justify-items-center min-h-[730px]">
         <h1 className="text-2xl font-semibold text-center text-gray-900 py-8">
@@ -94,7 +91,7 @@ const Login = () => {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400"
               id="email"
               type="email"
               onChange={handleChangeEmail}
@@ -110,12 +107,12 @@ const Login = () => {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-400"
               id="password"
               type="password"
               onChange={handleChangePassword}
               value={password}
-              placeholder="********"
+              placeholder="*********"
             />
           </div>
           <Button color="dark" type="submit" className="self-center">
