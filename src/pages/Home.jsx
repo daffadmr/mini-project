@@ -8,8 +8,23 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
+import Cookies from "js-cookie";
+import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Home = () => {
+  if (Cookies.get("auth")) {
+    Swal.fire({
+      title: "Login detected, go to dashboard?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        <Navigate to={"/dashboard"} replace />;
+      }
+    });
+  }
+
   return (
     <>
       <Helmet>
