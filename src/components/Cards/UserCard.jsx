@@ -7,8 +7,8 @@ const UserCard = ({ avatar, username }) => {
       <div className="user-card rounded-lg border border-slate-300 p-10 flex flex-col items-center gap-3 bg-white">
         <div className="overflow-hidden w-36 h-36 rounded-full">
           <img
-            src={avatar}
-            alt=""
+            src={avatar === null ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : avatar}
+            alt="Profile"
             className="object-cover h-36 w-36"
           />
         </div>
