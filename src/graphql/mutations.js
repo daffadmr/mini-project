@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const INSERT_USER = gql`
 mutation Register($email: String, $username: String, $password: String, $avatar: String) {
-  insert_user(
+  insert_users(
     objects: { email: $email, username: $username, password: $password, avatar: $avatar }
   ) {
     returning {
@@ -17,7 +17,7 @@ mutation Register($email: String, $username: String, $password: String, $avatar:
 `;
 
 export const INSERT_DIARY = gql`
-mutation InsertDiary($foto: String, $isi: String, $judul: String, $user_id: Int) {
+mutation InsertDiary($foto: String, $isi: String, $judul: String, $user_id: uuid) {
   insert_diari(objects: {foto: $foto, isi: $isi, judul: $judul, user_id: $user_id}) {
     returning {
       foto
