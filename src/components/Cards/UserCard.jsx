@@ -1,4 +1,3 @@
-import { Avatar } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,14 @@ const UserCard = ({ avatar, username }) => {
   return (
     <div className="px-5 md:px-0">
       <div className="user-card rounded-lg border border-slate-300 p-10 flex flex-col items-center gap-3 bg-white">
-        <Avatar img={avatar} size="xl" rounded={true} />
+        <div className="overflow-hidden w-36 h-36 rounded-full">
+          <img
+            src={avatar}
+            alt=""
+            className="object-cover h-36 w-36"
+          />
+        </div>
+
         <h1>
           Halo, <span>{username}</span>
         </h1>
