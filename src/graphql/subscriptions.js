@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const USER_SUBS = gql`
-subscription UserInfo($id: Int) {
-  user(where: { id: { _eq: $id } }) {
+subscription UserInfo($id: uuid) {
+  users(where: { id: { _eq: $id } }) {
     email
     username
     id
@@ -12,7 +12,7 @@ subscription UserInfo($id: Int) {
 `
 
 export const DIARY_USER_SUBS = gql`
-subscription UserDiary($user_id: Int) {
+subscription UserDiary($user_id: uuid) {
   diari(order_by: {created_at: desc}, where: {user_id: {_eq: $user_id}}) {
     foto
     id
