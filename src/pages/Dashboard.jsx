@@ -236,10 +236,10 @@ const Dashboard = () => {
                     );
                   }
                 )}
-                {limit > diaryCount?.diari_aggregate.aggregate.count ? (
-                  <></>
-                ) : (
-                  <Button color="dark" onClick={() => setLimit(limit + 5)}>Load More</Button>
+                {limit < diaryCount?.diari_aggregate.aggregate.count && (
+                  <Button color="dark" onClick={() => setLimit(limit + 5)}>
+                    Load More
+                  </Button>
                 )}
               </>
             )}
