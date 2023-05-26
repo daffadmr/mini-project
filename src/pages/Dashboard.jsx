@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   const [deleteDiary] = useMutation(DELETE_DIARY);
 
-  const userData = { ...data?.user[0] };
+  const userData = { ...data?.users[0] };
 
   const { username, avatar } = userData;
 
