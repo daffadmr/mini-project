@@ -12,8 +12,8 @@ subscription UserInfo($id: uuid) {
 `
 
 export const DIARY_USER_SUBS = gql`
-subscription UserDiary($user_id: uuid) {
-  diari(order_by: {created_at: desc}, where: {user_id: {_eq: $user_id}}) {
+subscription UserDiary($user_id: uuid, $limit: Int) {
+  diari(order_by: {created_at: desc}, where: {user_id: {_eq: $user_id}}, limit: $limit) {
     foto
     id
     isi
