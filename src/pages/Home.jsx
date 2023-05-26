@@ -9,19 +9,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
 import Cookies from "js-cookie";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Home = () => {
+  const navigate = useNavigate()
   if (Cookies.get("auth")) {
     Swal.fire({
       title: "Login detected, go to dashboard?",
       showCancelButton: true,
       confirmButtonText: "Yes",
     }).then((result) => {
-      if (result.isConfirmed) {
-        <Navigate to={"/dashboard"} replace />;
-      }
+      if (result.isConfirmed) return navigate("/dashboard", {replace: true})
     });
   }
 
