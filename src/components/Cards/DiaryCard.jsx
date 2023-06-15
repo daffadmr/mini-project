@@ -5,6 +5,9 @@ import ReactMarkdown from "react-markdown";
 import { Dropdown } from "flowbite-react";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import githubMarkdownCss from "github-markdown-css"
 
 const DiaryCard = ({
   id,
@@ -45,12 +48,46 @@ const DiaryCard = ({
             <strong>{judul}</strong>
           </p>
         </div>
-        <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
+        <div className="diary-content flex xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
           {foto === null ? (
-            <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}/>
+            <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={`flex flex-col max-h-[240px] overflow-hidden` + githubMarkdownCss} components={{
+                    code({ node, inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          {...props}
+                          style={oneDark}
+                          children={String(children).replace(/\n$/, "")}
+                          language={match[1]}
+                          PreTag="div"
+                        />
+                      ) : (
+                        <code {...props} className={className}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}/>
           ) : (
             <>
-              <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}/>
+              <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={`flex flex-col max-h-[240px] overflow-hidden` + githubMarkdownCss} components={{
+                    code({ node, inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          {...props}
+                          style={oneDark}
+                          children={String(children).replace(/\n$/, "")}
+                          language={match[1]}
+                          PreTag="div"
+                        />
+                      ) : (
+                        <code {...props} className={className}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}/>
               <img
                 src={foto}
                 alt=""
