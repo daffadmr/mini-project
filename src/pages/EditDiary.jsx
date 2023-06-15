@@ -64,7 +64,7 @@ const EditDiary = () => {
       },
     });
 
-    navigate("/dashboard");
+    navigate(`/dashboard/diari/${id}`);
     Swal.fire({
       title: "Success",
       text: "Diari berhasil diedit!",
