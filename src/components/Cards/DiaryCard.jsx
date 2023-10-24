@@ -41,7 +41,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
             <h1 className="text-center lg:text-start text-xl xl:text-2xl">
               <strong>{judul}</strong>
             </h1>
-            <div className="diary-content flex xl:flex-row justify-center gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
+            <div className="diary-content flex xl:flex-row justify-center gap-5 text-justify overflow-hidden md:max-h-[400px]">
               <ReactMarkdown
                 children={isi}
                 remarkPlugins={[remarkGfm]}
@@ -76,7 +76,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
             <h1 className="text-center lg:text-start text-xl xl:text-2xl">
               <strong>{judul}</strong>
             </h1>
-            <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
+            <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify overflow-hidden xl:max-h-[400px]">
               <ReactMarkdown
                 children={isi}
                 remarkPlugins={[remarkGfm]}
@@ -107,7 +107,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
               <img
                 src={foto}
                 alt=""
-                className="self-center w-[400px] md:w-[250px] rounded-lg"
+                className="self-center md:w-[250px] rounded-lg"
               />
             </div>
           </>
