@@ -82,10 +82,10 @@ const DiariDetail = () => {
 
           {data?.diari[0].foto === null ? (
             <div
-              className="flex flex-col min-h-[500px] w-[80vw] lg:w-full bg-white rounded-lg p-10"
+              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10"
               key={data?.diari[0].id}
             >
-              <h1 className="pb-5">
+              <h1 className="pb-5 text-center">
                 <strong>{data?.diari[0].judul}</strong>
               </h1>
               <ReactMarkdown
@@ -115,10 +115,10 @@ const DiariDetail = () => {
             </div>
           ) : (
             <div
-              className="flex flex-col justify-center min-h-[200px] w-[80vw] lg:w-full bg-white rounded-lg p-10 md:mt-0"
+              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10 md:mt-0"
               key={data?.diari[0].id}
             >
-              <h1 className="pb-5">
+              <h1 className="pb-5 text-center">
                 <strong>{data?.diari[0].judul}</strong>
               </h1>
               <div className="flex flex-col">
