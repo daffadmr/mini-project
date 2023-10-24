@@ -30,11 +30,9 @@ Project ini merupakan diari pribadi berbasis website. Anda dapat membuat, mengub
 
 <!-- USAGE EXAMPLES -->
 ## Penggunaan
-Ada bug di saat login, jadi jika ingin menggunakan fitur yang ada di website ini bisa menggunakan:
-* username: jajang@gmail.com
-* password: jajang12
-
-
+1. Daftar akun (jangan pake username dan password yang bener, soalnya belom dihash, xixixixi)
+2. Login dengan akun yang sudah terdaftar
+3. Enjoy!
 
 <!-- LICENSE -->
 ## License
