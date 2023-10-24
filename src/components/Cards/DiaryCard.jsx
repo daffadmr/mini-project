@@ -7,16 +7,9 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import githubMarkdownCss from "github-markdown-css"
+import githubMarkdownCss from "github-markdown-css";
 
-const DiaryCard = ({
-  id,
-  judul,
-  tanggal,
-  isi,
-  foto,
-  deleteDiaryById,
-}) => {
+const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
   return (
     <div className="relative">
       <div className="absolute right-9 top-10 z-10 hover:bg-slate-200 rounded-full pr-2 py-2">
@@ -40,62 +33,85 @@ const DiaryCard = ({
       >
         <div className="diary-heading">
           <p className="text-end pb-2 flex justify-between relative">
-            <Moment format="D MMMM, YYYY">
-              {tanggal}
-            </Moment>
-          </p>
-          <p className="text-2xl">
-            <strong>{judul}</strong>
+            <Moment format="D MMMM, YYYY">{tanggal}</Moment>
           </p>
         </div>
-        <div className="diary-content flex xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
-          {foto === null ? (
-            <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={`flex flex-col max-h-[240px] overflow-hidden` + githubMarkdownCss} components={{
-                    code({ node, inline, className, children, ...props }) {
-                      const match = /language-(\w+)/.exec(className || "");
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          {...props}
-                          style={oneDark}
-                          children={String(children).replace(/\n$/, "")}
-                          language={match[1]}
-                          PreTag="div"
-                        />
-                      ) : (
-                        <code {...props} className={className}>
-                          {children}
-                        </code>
-                      );
-                    },
-                  }}/>
-          ) : (
-            <>
-              <ReactMarkdown children={isi} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={`flex flex-col max-h-[240px] overflow-hidden` + githubMarkdownCss} components={{
-                    code({ node, inline, className, children, ...props }) {
-                      const match = /language-(\w+)/.exec(className || "");
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          {...props}
-                          style={oneDark}
-                          children={String(children).replace(/\n$/, "")}
-                          language={match[1]}
-                          PreTag="div"
-                        />
-                      ) : (
-                        <code {...props} className={className}>
-                          {children}
-                        </code>
-                      );
-                    },
-                  }}/>
+        {foto === null ? (
+          <>
+            <h1 className="text-center lg:text-start text-xl xl:text-2xl">
+              <strong>{judul}</strong>
+            </h1>
+            <div className="diary-content flex xl:flex-row justify-center gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
+              <ReactMarkdown
+                children={isi}
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                className={
+                  `flex flex-col max-h-[240px] overflow-hidden` +
+                  githubMarkdownCss
+                }
+                components={{
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        {...props}
+                        style={oneDark}
+                        children={String(children).replace(/\n$/, "")}
+                        language={match[1]}
+                        PreTag="div"
+                      />
+                    ) : (
+                      <code {...props} className={className}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className="text-center lg:text-start text-xl xl:text-2xl">
+              <strong>{judul}</strong>
+            </h1>
+            <div className="diary-content flex flex-col-reverse xl:flex-row justify-between gap-5 text-justify overflow-hidden max-h-[500px] md:max-h-[400px]">
+              <ReactMarkdown
+                children={isi}
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                className={
+                  `flex flex-col max-h-[240px] overflow-hidden` +
+                  githubMarkdownCss
+                }
+                components={{
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        {...props}
+                        style={oneDark}
+                        children={String(children).replace(/\n$/, "")}
+                        language={match[1]}
+                        PreTag="div"
+                      />
+                    ) : (
+                      <code {...props} className={className}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              />
               <img
                 src={foto}
                 alt=""
                 className="self-center w-[400px] md:w-[250px] rounded-lg"
               />
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </Link>
     </div>
   );
