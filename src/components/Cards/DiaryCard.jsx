@@ -7,7 +7,6 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import githubMarkdownCss from "github-markdown-css";
 
 const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
   return (
@@ -33,7 +32,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
       >
         <div className="diary-heading">
           <p className="text-end pb-2 flex justify-between relative">
-            <Moment format="D MMMM, YYYY">{tanggal}</Moment>
+            <Moment className="font-bold" format="dddd, D MMMM YYYY">{tanggal}</Moment>
           </p>
         </div>
         {foto === null ? (
@@ -41,14 +40,13 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
             <h1 className="text-center lg:text-start text-xl xl:text-2xl">
               <strong>{judul}</strong>
             </h1>
-            <div className="diary-content flex xl:flex-row justify-center gap-5 text-justify overflow-hidden md:max-h-[400px]">
+            <div className="diary-content flex xl:flex-row gap-5 text-justify overflow-hidden min-w-full md:max-h-[400px]">
               <ReactMarkdown
                 children={isi}
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 className={
-                  `flex flex-col max-h-[240px] overflow-hidden` +
-                  githubMarkdownCss
+                  `flex flex-col max-h-[240px] overflow-hidden prose-sm prose-headings:mb-4 prose-headings:mt-0 prose-p:m-0 prose-li:m-0  xl:prose`
                 }
                 components={{
                   code({ node, inline, className, children, ...props }) {
@@ -82,8 +80,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 className={
-                  `flex flex-col max-h-[240px] overflow-hidden` +
-                  githubMarkdownCss
+                  `flex flex-col max-h-[240px] overflow-hidden prose-sm prose-headings:mb-4 prose-headings:mt-0 prose-p:m-0 prose-li:m-0  xl:prose`
                 }
                 components={{
                   code({ node, inline, className, children, ...props }) {
