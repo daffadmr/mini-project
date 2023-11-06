@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet-async";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import githubMarkdownCss from "github-markdown-css"
+import Moment from "react-moment";
 
 const DiariDetail = () => {
   const { id } = useParams();
@@ -85,14 +85,19 @@ const DiariDetail = () => {
               className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10"
               key={data?.diari[0].id}
             >
-              <h1 className="pb-5 text-center">
-                <strong>{data?.diari[0].judul}</strong>
-              </h1>
+                <Moment className="text-end font-bold" format="dddd, D MMMM YYYY">
+                  {data?.diari[0].created_at}
+                </Moment>
+              {data?.diari[0].judul !== "" && (
+                <h1 className="pb-5 text-center">
+                  <strong>{data?.diari[0].judul}</strong>
+                </h1>
+              )}
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 children={data?.diari[0].isi}
-                className={githubMarkdownCss}
+                className="prose prose-p:mt-0 prose-p:mb-2 prose-headings:mb-2 prose-headings:mt-0 min-w-full prose-li:m-0"
                 components={{
                   code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
@@ -118,9 +123,11 @@ const DiariDetail = () => {
               className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10 md:mt-0"
               key={data?.diari[0].id}
             >
-              <h1 className="pb-5 text-center">
-                <strong>{data?.diari[0].judul}</strong>
-              </h1>
+              {data?.diari[0].judul !== "" && (
+                <h1 className="pb-5 text-center">
+                  <strong>{data?.diari[0].judul}</strong>
+                </h1>
+              )}
               <div className="flex flex-col">
                 <img
                   src={data?.diari[0].foto}
@@ -131,7 +138,7 @@ const DiariDetail = () => {
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
                   children={data?.diari[0].isi}
-                  className={githubMarkdownCss}
+                  className="prose prose-p:mt-0 prose-p:mb-2 prose-headings:mb-4 prose-headings:mt-0 prose-li:text-black min-w-full prose-li:m-0"
                   components={{
                     code({ node, inline, className, children, ...props }) {
                       const match = /language-(\w+)/.exec(className || "");
