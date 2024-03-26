@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const UserCard = ({ avatar, username }) => {
   return (
     <div className="px-5 md:px-0">
-      <div className="user-card rounded-lg border border-slate-300 p-10 flex flex-col items-center gap-3 bg-white">
+      <div className="user-card rounded-lg border border-slate-300 p-10 flex flex-col items-center gap-3 bg-white sticky top-[91px]">
         <div className="overflow-hidden w-36 h-36 rounded-full">
           <img
             src={avatar === null ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : avatar}
