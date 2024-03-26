@@ -150,9 +150,12 @@ const EditDiary = () => {
                 )}
               </div>
             </div>
-            <div className="input-group mt-10">
+            <div className="input-group flex gap-2 mt-10">
               <Button color={"dark"} type="submit">
                 Submit
+              </Button>
+              <Button color={"light"} onClick={() => navigate(`/dashboard/diari/${id}`)}>
+                Cancel
               </Button>
             </div>
           </form>
