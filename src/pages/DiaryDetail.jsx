@@ -82,12 +82,15 @@ const DiariDetail = () => {
 
           {data?.diari[0].foto === null ? (
             <div
-              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10"
+              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-[50vw] bg-white rounded-lg p-10"
               key={data?.diari[0].id}
             >
-                <Moment className="text-end font-bold" format="dddd, D MMMM YYYY">
-                  {data?.diari[0].created_at}
-                </Moment>
+              <Moment
+                className="font-bold pb-12 text-center lg:text-end"
+                format="dddd, D MMMM YYYY"
+              >
+                {data?.diari[0].created_at}
+              </Moment>
               {data?.diari[0].judul !== "" && (
                 <h1 className="pb-5 text-center">
                   <strong>{data?.diari[0].judul}</strong>
@@ -120,9 +123,15 @@ const DiariDetail = () => {
             </div>
           ) : (
             <div
-              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-full bg-white rounded-lg p-10 md:mt-0"
+              className="flex flex-col min-h-[60vh] w-[80vw] lg:w-[50vw] bg-white rounded-lg p-10 md:mt-0"
               key={data?.diari[0].id}
             >
+              <Moment
+                className="font-bold pb-12 text-center lg:text-end"
+                format="dddd, D MMMM YYYY"
+              >
+                {data?.diari[0].created_at}
+              </Moment>
               {data?.diari[0].judul !== "" && (
                 <h1 className="pb-5 text-center">
                   <strong>{data?.diari[0].judul}</strong>
