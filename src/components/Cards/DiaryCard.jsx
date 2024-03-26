@@ -46,7 +46,7 @@ const DiaryCard = ({ id, judul, tanggal, isi, foto, deleteDiaryById }) => {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 className={
-                  `flex flex-col max-h-[240px] overflow-hidden prose-sm prose-headings:mb-4 prose-headings:mt-0 prose-p:m-0 prose-li:m-0  xl:prose`
+                  `flex flex-col max-h-[240px] overflow-hidden prose-sm prose-headings:mb-4 prose-headings:mt-0 prose-p:m-0 prose-li:m-0 xl:prose w-full`
                 }
                 components={{
                   code({ node, inline, className, children, ...props }) {
