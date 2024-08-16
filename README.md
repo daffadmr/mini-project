@@ -30,7 +30,7 @@ Project ini merupakan diari pribadi berbasis website. Anda dapat membuat, mengub
 
 <!-- USAGE EXAMPLES -->
 ## Penggunaan
-1. Daftar akun (jangan pake username dan password yang bener, soalnya belom dihash, xixixixi)
+1. Daftar akun (jangan pake username dan password yang bener, soalnya belom dienkripsi, xixixixi)
 2. Login dengan akun yang sudah terdaftar
 3. Enjoy!
 
